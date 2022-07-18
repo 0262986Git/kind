@@ -16,7 +16,7 @@ git clone https://github.com/Keysight/cyperf.git
 
 ##### Builds A Kind K8s Cluster named kind-cluster with 1 Master and 2 Worker nodes
 
-cat <<EOF | kind create cluster --name cyperf_k8s --config -
+cat <<EOF | kind create cluster --config -
 
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -27,22 +27,14 @@ nodes:
 
 EOF
 
-##### Waits for Kind Cluster to be in a ready state
-
-kubectl wait --namespace ingress-nginx \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/component=controller \
-  --timeout=120s
-
 ##### Deploys an NGINX Ingress Controller Daemonset
-
-
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
 
 ##### Label each K8S Worker - One for Client and One for Server
 
-kubectl label nodes cyperf_k8s-worker agenttype=client
-kubectl label nodes cyperf_k8s-worker2 agenttype=server
+kubectl label nodes kind-worker agenttype=client
+kubectl label nodes kind-worker2 agenttype=server
 
 
 ##### Create CyPerf Server Agent configuration YAML thae will reside in user home directory with Ingress enabled but WAF Disabled. Note the configuration of the Agent Controller will need to be updated to reflect your environment.
