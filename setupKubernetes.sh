@@ -46,6 +46,8 @@ echo "Please wait while we check if the K8s Nodes are all in a ready state befor
 
 kubectl wait --for=condition=ready node --all --timeout=60s
 
+kubectl label node kind-control-plane ingress-ready=true
+
 
 ##### Deploys an NGINX Ingress Controller Daemonset
 kubectl apply -f $HOME/kind/nginx-deploy.yaml
