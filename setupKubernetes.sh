@@ -9,19 +9,19 @@ case $response in
 done
 
 
-##### Installs kubectl version 1.21.12 
+##### Installs kubectl version 1.24.0 
 
-echo "Downloading and Installing kubectl"
+echo "Downloading and Installing kubectl version 1.24.0"
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.21.12/bin/linux/amd64/kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin
 
 ##### Intstalls Kind K8s
 
-echo "Downloading and Installing Kind K8s"
+echo "Downloading and Installing Kind v0.14.0 K8s version 0.1"
 
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.13.0/kind-linux-amd64
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin
 
@@ -29,8 +29,8 @@ sudo mv ./kind /usr/local/bin
 #git clone https://github.com/Keysight/cyperf.git
 
 ##### Builds A Kind K8s Cluster named kind-cluster with 1 Master and 2 Worker nodes
-
-cat <<EOF | kind create cluster --image=kindest/node:v1.21.12 --config -
+echo "Building K8s Cluster with version 1.24.0"
+cat <<EOF | kind create cluster --image=kindest/node:v1.24.0 --config -
 
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
