@@ -38,6 +38,7 @@ nodes:
 EOF
 
 ##### Wait for all Nodes to be in a Ready State
+echo "Please wait while we check if the K8s Nodes are all in a ready state before the script continues. This action will timeout after 60s"
 
 kubectl wait --for=condition=ready node --all --timeout=60s
 
