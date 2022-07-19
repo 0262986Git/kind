@@ -9,9 +9,9 @@ case $response in
 done
 
 
-##### Installs kubectl version 1.23.6 
+##### Installs kubectl version 1.21.12 
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.21.12/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin
 
@@ -26,7 +26,7 @@ sudo mv ./kind /usr/local/bin
 
 ##### Builds A Kind K8s Cluster named kind-cluster with 1 Master and 2 Worker nodes
 
-cat <<EOF | kind create cluster --image=kindest/node:v1.23.6@sha256:1af0f1bee4c3c0fe9b07de5e5d3fafeb2eec7b4e1b268ae89fcab96ec67e8355 --config -
+cat <<EOF | kind create cluster --image=kindest/node:v1.21.12 --config -
 
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
