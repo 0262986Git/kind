@@ -1,4 +1,15 @@
 
+while true;
+do
+    read -r -p "What is your CyPerf Controller IP? " response   
+    if [[ $response =~ ^([0-255][.][0-255][.][0-255][.][0-255])$ ]]
+    then
+        echo "You chose $response"
+    else
+        exit 0
+    fi
+done
+
 ##### Installs kubectl version 1.24.0 
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
