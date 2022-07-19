@@ -501,7 +501,7 @@ spec:
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/master
-        operator: Equal
+        operator: Exists
       volumes:
       - name: webhook-cert
         secret:
