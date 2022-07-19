@@ -12,7 +12,7 @@ chmod +x ./kind
 sudo mv ./kind /usr/local/bin
 
 ##### Downloads Example CyPerf Agent Configurations
-git clone https://github.com/Keysight/cyperf.git
+#git clone https://github.com/Keysight/cyperf.git
 
 ##### Builds A Kind K8s Cluster named kind-cluster with 1 Master and 2 Worker nodes
 
