@@ -11,13 +11,17 @@ done
 
 ##### Installs kubectl version 1.21.12 
 
+echo "Downloading and Installing kubectl"
+
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.21.12/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin
 
 ##### Intstalls Kind K8s
 
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
+echo "Downloading and Installing Kind K8s"
+
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.13.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin
 
