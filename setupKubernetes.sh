@@ -38,9 +38,11 @@ nodes:
 EOF
 
 ##### Deploys an NGINX Ingress Controller Daemonset
-kubectl apply -f $HOME/kind/nginx-deploy.yaml
+kubectl apply -f $HOME/kind/nginx-deploy-2.yaml
 
 ##### Wait for NGINX Pods to be in Ready state.
+
+echo "Please wait while we check if the NGINX Pod is in a ready state before the script continues"
 
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
