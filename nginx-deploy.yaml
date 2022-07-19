@@ -498,10 +498,10 @@ spec:
         kubernetes.io/os: linux
       serviceAccountName: ingress-nginx
       terminationGracePeriodSeconds: 0
-      tolerations:
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/master
-        operator: Equal
+      #tolerations:
+      #- effect: NoSchedule
+        #key: node-role.kubernetes.io/master
+        #operator: Equal
       #- effect: NoSchedule
         #key: node-role.kubernetes.io/control-plane
         #operator: Equal
