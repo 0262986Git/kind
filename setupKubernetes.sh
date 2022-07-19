@@ -28,7 +28,7 @@ nodes:
 EOF
 
 ##### Deploys an NGINX Ingress Controller Daemonset
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+kubectl apply -f $HOME/kind/nginx-deploy.yaml
 
 
 ##### Label each K8S Worker - One for Client and One for Server
