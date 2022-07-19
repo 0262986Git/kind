@@ -37,12 +37,17 @@ nodes:
 
 EOF
 
+##### Wait for all Nodes to be in a Ready State
+
+kubectl wait --for=condition=ready node --all --timeout=60s
+
+
 ##### Deploys an NGINX Ingress Controller Daemonset
 kubectl apply -f $HOME/kind/nginx-deploy.yaml
 
 ##### Wait for NGINX Pods to be in Ready state.
 
-echo "Please wait while we check if the NGINX Pod is in a ready state before the script continues"
+echo "Please wait while we check if the NGINX Pod is in a ready state before the script continues. This action will timeout after 120s"
 
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
