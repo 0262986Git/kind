@@ -31,7 +31,7 @@ cat <<EOF | kind create cluster --image=kindest/node:v1.23.6@sha256:1af0f1bee4c3
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
-- role: master
+- role: control-plane
 - role: worker
 - role: worker
 
