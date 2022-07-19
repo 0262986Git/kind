@@ -359,5 +359,5 @@ EOF
 
 ##### Deploy the Agent and Server for a container - B2B Test
 
-kubectl create -f $HOME/cyperf-agent-client.yaml
-kubectl create -f $HOME/cyperf-agent-server-nowaf.yaml
+kubectl apply -f $HOME/cyperf-agent-client.yaml
+kubectl apply -f $HOME/cyperf-agent-server-nowaf.yaml
