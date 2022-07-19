@@ -77,7 +77,7 @@ spec:
                     image: public.ecr.aws/keysight/cyperf-agent:latest
                     env:
                     -   name: AGENT_CONTROLLER
-                        value: "192.168.2.20"
+                        value: "$ip"
                     #   name: AGENT_MANAGEMENT_INTERFACE
                     #   value: "eth0"
                     #   name: AGENT_TEST_INTERFACE
@@ -186,7 +186,7 @@ spec:
                     image: public.ecr.aws/keysight/cyperf-agent:latest
                     env:
                     -   name: AGENT_CONTROLLER
-                        value: "192.168.2.20"
+                        value: "$ip"
                     #   name: AGENT_MANAGEMENT_INTERFACE
                     #   value: "eth0"
                     #   name: AGENT_TEST_INTERFACE
@@ -295,7 +295,7 @@ spec:
                     image: public.ecr.aws/keysight/cyperf-agent:latest
                     env:
                     -   name: AGENT_CONTROLLER
-                        value: "192.168.2.20"
+                        value: "$ip"
                     #   name: AGENT_MANAGEMENT_INTERFACE
                     #   value: "eth0"
                     #   name: AGENT_TEST_INTERFACE
