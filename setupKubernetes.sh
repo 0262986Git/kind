@@ -9,11 +9,11 @@ case $response in
 done
 
 
-##### Installs kubectl version 1.24.0 
+##### Installs kubectl version 1.23.6 
 
-echo "Downloading and Installing kubectl version 1.24.0"
+echo "Downloading and Installing kubectl version 1.23.6"
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin
 
@@ -29,13 +29,26 @@ sudo mv ./kind /usr/local/bin
 #git clone https://github.com/Keysight/cyperf.git
 
 ##### Builds A Kind K8s Cluster named kind-cluster with 1 Master and 2 Worker nodes
-echo "Building K8s Cluster with version 1.24.0"
-cat <<EOF | kind create cluster --image=kindest/node:v1.24.0 --config -
+echo "Building K8s Cluster with version 1.23.6"
+cat <<EOF | kind create cluster --image=kindest/node:v1.23.6@sha256:b1fa224cc6c7ff32455e0b1fd9cbfd3d3bc87ecaa8fcb06961ed1afb3db0f9ae --config -
 
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
 - role: worker
 - role: worker
 
@@ -45,9 +58,6 @@ EOF
 echo "Please wait while we check if the K8s Nodes are all in a ready state before the script continues. This action will timeout after 60s"
 
 kubectl wait --for=condition=ready node --all --timeout=60s
-
-kubectl label node kind-control-plane ingress-ready=true
-
 
 ##### Deploys an NGINX Ingress Controller Daemonset
 kubectl apply -f $HOME/kind/nginx-deploy.yaml
