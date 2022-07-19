@@ -1,14 +1,13 @@
-
-while true;
-do
-    read -r -p "What is your CyPerf Controller IP? " response   
-    if [[ $response =~ ^([0-255][.][0-255][.][0-255][.][0-255])$ ]]
-    then
-        echo "You chose $response"
-    else
-        exit 0
-    fi
+while true; do
+read -r -p "What is your CyPerf Controller IP? " ip
+read -p "You chose $ip, is this correct? (y/n) " response
+case $response in
+  [Yy]* ) break;;
+  [Nn]* ) echo "Please enter the correct IP.";;
+      * ) echo "Please answer y or n.";;
+    esac
 done
+
 
 ##### Installs kubectl version 1.24.0 
 
@@ -41,6 +40,12 @@ EOF
 ##### Deploys an NGINX Ingress Controller Daemonset
 kubectl apply -f $HOME/kind/nginx-deploy.yaml
 
+##### Wait for NGINX Pods to be in Ready state.
+
+kubectl wait --namespace ingress-nginx \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=120s
 
 ##### Label each K8S Worker - One for Client and One for Server
 
