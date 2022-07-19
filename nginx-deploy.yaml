@@ -500,12 +500,8 @@ spec:
       terminationGracePeriodSeconds: 0
       tolerations:
       - effect: NoSchedule
-        #key: node-role.kubernetes.io/master
-        key:
-        operator: Exists
-      #- effect: NoSchedule
-        #key: node-role.kubernetes.io/control-plane
-        #operator: Exists
+        key: node-role.kubernetes.io/master
+        operator: Equal
       volumes:
       - name: webhook-cert
         secret:
