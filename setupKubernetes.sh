@@ -38,7 +38,7 @@ nodes:
 EOF
 
 ##### Deploys an NGINX Ingress Controller Daemonset
-kubectl apply -f $HOME/kind/nginx-deploy-2.yaml
+kubectl apply -f $HOME/kind/nginx-deploy.yaml
 
 ##### Wait for NGINX Pods to be in Ready state.
 
