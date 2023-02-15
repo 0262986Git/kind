@@ -7,3 +7,5 @@ Run SetupDocker.sh - this installs Docker in preparation for Kubernetes.
 Run SetupKubernetes.sh - this installs K8s 1xMaster, 2xWorker nodes, CyPerf Client/Server Pods, NGINX Ingress controller.
 Scripts for enableWAF.sh and disableWAF.sh modify the YAML on the CyPerf Server Pod to activate the WAF rules.
 
+Internal Video Tutorial walking through the setup - 
+https://keysighttech-my.sharepoint.com/:v:/g/personal/christopher_graham_keysight_com/EVPHIctfOEpPi866iodAzhgBIDnpqIhh19mV23tmKerRsQ?e=Ld1MbU
